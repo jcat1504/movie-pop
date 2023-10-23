@@ -1,21 +1,37 @@
 .movie-grid {
-    display: grid;
+    display: block;/* no idea why this would work*/
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
-}
-
-.movie-card {
+  }
+  
+  /* Style for individual movie cards within the grid */
+  .movie-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
-    text-align: center;
-}
-
-.movie-card img {
+    margin: 5px;
+  }
+  
+  .movie-card img {
     max-width: 100%;
     height: auto;
+  }
+  
+  .movie-card p {
+    margin-top: 10px;
+    flex-grow: 1;
+  }
+  
+
+.slick-slider {
+    width: 80%;
+    margin: 0 auto;
 }
 
-.movie-card p {
-    margin-top: 10px;
+.slick-slide {
+    padding: 10px;
 }
