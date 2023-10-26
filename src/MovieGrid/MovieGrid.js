@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import GridCarousel from '../GridCarousel/GridCarousel';
 import './MovieGrid.css';
 
 class MovieGrid extends Component {
@@ -7,6 +6,7 @@ class MovieGrid extends Component {
       super(props);
       this.state = {
         movies: [],
+        position: 0,
       };
     }
   
@@ -20,12 +20,37 @@ class MovieGrid extends Component {
           console.error(error);
         });
     }
+
+    slideLeft = () => {
+      this.setState((prevState) => ({
+        position: prevState.position + 1,
+      }));
+    };
   
+      slideRight = () => {
+        this.setState((prevState) => ({
+          position: prevState.position - 1,
+        }))
+      }
     render() {
-      const { movies } = this.state;
-      return (
-        <div className="movie-grid">
-          <GridCarousel movies={movies} /> {/* Render the GridCarousel component */}
+      const { movies, position } = this.state;
+      rreturn (
+        <div className="movie-slider">
+          <div className="movie-grid" style={{ transform: `translateX(${position * 100}%)` }}>
+            {movies.map((movie) => (
+              <div key={movie.id} className="movie-card">
+                <img src={`http://localhost:8080/${movie.poster_path}`} alt={movie.title} />
+                <p>{movie.title}</p>
+              </div>
+            ))}
+          </div>
+  
+          <button id="left-button" onClick={this.slideLeft}>
+            Previous
+          </button>
+          <button id="right-button" onClick={this.slideRight}>
+            Next
+          </button>
         </div>
       );
     }

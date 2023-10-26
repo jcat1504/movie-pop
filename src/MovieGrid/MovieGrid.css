@@ -1,10 +1,19 @@
+.movie-slider {
+  position: relative;
+  overflow: hidden;
+}
+
 .movie-grid {
-    /* display: block; */
-    /* no idea why this would work*/
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 20px;
-  }
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Rest of your CSS styles */
+
   
   /* Style for individual movie cards within the grid */
   .movie-card {
@@ -37,3 +46,4 @@
 .slick-slide {
     padding: 10px;
 }
+
